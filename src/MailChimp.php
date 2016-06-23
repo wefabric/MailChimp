@@ -238,18 +238,9 @@ class MailChimp
     private function getClient()
     {
         if(!$this->client){
-            $this->setClient();
+            $this->client = new Client();
         }
         return $this->client;
-    }
-
-    /**
-     * Sets the request client.
-     * @return GuzzleHttp\Client the request client.
-     */
-    private function setClient()
-    {
-        $this->client = new Client();
     }
 
     /**
