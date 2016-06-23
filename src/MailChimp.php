@@ -59,7 +59,7 @@ class MailChimp
     private $client;
 
     /**
-     * Valid request methods
+     * Valid request methods.
      * @var string[]
      */
     protected $validMethods = [
@@ -71,7 +71,7 @@ class MailChimp
     ];
 
     /**
-     * Valid request methods
+     * Methods which allow a request body.
      * @var string[]
      */
     protected $bodyMethods = [
@@ -92,7 +92,7 @@ class MailChimp
 
     /**
      * Returns the MailChimp API key.
-     * @return string.
+     * @return string the MailChimp API key.
      */
     public function getApiKey()
     {
@@ -101,7 +101,7 @@ class MailChimp
 
     /**
      * Sets the MailChimp API key.
-     * @param string $apiKey the API key.
+     * @param string $apiKey the MailChimp API key.
      */
     public function setApiKey($apiKey)
     {
@@ -122,7 +122,7 @@ class MailChimp
 
     /**
      * Returns the MailChimp API endpoint.
-     * @return string
+     * @return string the MailChimp API endpoint
      */
     public function getApiEndpoint()
     {
