@@ -1,0 +1,32 @@
+{
+    "name": "slicklabs/mailchimp",
+    "type": "library",
+    "description": "MailChimp API v3 wrapper for PHP",
+    "keywords": [
+        "mailchimp",
+        "abstract",
+        "psr-7"
+    ],
+    "homepage": "https://slicklabs.nl/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leo Flapper",
+            "email": "leo.flapper@slicklabs.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle":"~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SlickLabs\\MailChimp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SlickLabs\\MailChimp\\": "src/"
+        }
+    }
+}
