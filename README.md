@@ -10,23 +10,22 @@ Because the simple nature of this library you can call the [MailChimp API method
 
 First of all you have to include the MailChimp class.
 ```php
-    use SlickLabs\MailChimp\MailChimp;
+use SlickLabs\MailChimp\MailChimp;
 
-    $MailChimp = new MailChimp('MAILCHIMP-API-KEY');
+$MailChimp = new MailChimp('MAILCHIMP-API-KEY');
 ```
 
 For retrieving the MailChimp lists
 
 ```php
-    $response = $MailChimp->get("lists");
+$response = $MailChimp->get("lists");
 
-    echo "<pre>"; print_r($response->getBody()); echo "</pre>";
+echo "<pre>"; print_r($response->getBody()); echo "</pre>";
 ```
 
 Or adding a new subscriber to a list.
 
 ```php
-    
 $args = [
     "body" => [
         "email_address" => "myemail@email.com",
@@ -43,7 +42,6 @@ echo "<pre>"; print_r($response->getBody()); echo "</pre>";
 Or updating an existing subscriber of a list.
 
 ```php
-
 use SlickLabs\MailChimp\Subscriber;
 
 $args = [
@@ -62,7 +60,6 @@ echo "<pre>"; print_r($response->getBody()); echo "</pre>";
 Or deleting a subscriber of a list.
 
 ```php
-
 use SlickLabs\MailChimp\Subscriber;
 
 $subscriberHash = Subscriber::hash("myemail@email.com");
