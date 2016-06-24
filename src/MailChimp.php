@@ -290,20 +290,10 @@ class MailChimp
     }
 
     /**
-     * Performs an DELETE request.
-     * @param  string $uri the MailChimp API uri.
-     * @param  array  $args   request values.
-     * @return SlickLabs\MailChimp\ResponseInterface the MailChimp API response.
-     */
-    public function delete($uri, $args = [])
-    {
-        return $this->doRequest('DELETE', $uri, $args);
-    }
-
-    /**
      * Performs a GET request.
      * @param  string $uri the MailChimp API uri.
      * @param  array  $args   request values.
+     * @throws ResponseException if the response status code is not 200.
      * @return SlickLabs\MailChimp\ResponseInterface the MailChimp API response.
      */
     public function get($uri, $args = [])
@@ -315,6 +305,7 @@ class MailChimp
      * Performs a PATCH request.
      * @param  string $uri the MailChimp API uri.
      * @param  array  $args   request values.
+     * @throws ResponseException if the response status code is not 200.
      * @return SlickLabs\MailChimp\ResponseInterface the MailChimp API response.
      */
     public function patch($uri, $args = [])
@@ -326,6 +317,7 @@ class MailChimp
      * Performs a POST request.
      * @param  string $uri the MailChimp API uri.
      * @param  array  $args   request values.
+     * @throws ResponseException if the response status code is not 200.
      * @return SlickLabs\MailChimp\ResponseInterface the MailChimp API response.
      */
     public function post($uri, $args = [])
@@ -337,12 +329,25 @@ class MailChimp
      * Performs a PUT request.
      * @param  string $uri the MailChimp API uri.
      * @param  array  $args   request values.
+     * @throws ResponseException if the response status code is not 200.
      * @return SlickLabs\MailChimp\ResponseInterface the MailChimp API response.
      */
     public function put($uri, $args = [])
     {
         return $this->doRequest('PUT', $uri, $args);
     }  
+
+    /**
+     * Performs an DELETE request.
+     * @param  string $uri the MailChimp API uri.
+     * @param  array  $args   request values.
+     * @throws ResponseException if the response status code is not 200.
+     * @return SlickLabs\MailChimp\ResponseInterface the MailChimp API response.
+     */
+    public function delete($uri, $args = [])
+    {
+        return $this->doRequest('DELETE', $uri, $args);
+    }
 
     /**
      * Performs a HTTP request.
