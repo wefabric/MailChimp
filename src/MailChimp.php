@@ -267,10 +267,7 @@ class MailChimp
             ));
         }
 
-        if(isset($this->validMethods[$method])){
-            return true;
-        }
-        return false;
+        return (isset($this->validMethods[$method]));
     }
 
     /**
@@ -289,10 +286,7 @@ class MailChimp
             ));
         }
 
-        if(isset($this->bodyMethods[$method])){
-            return true;
-        }
-        return false;
+        return (isset($this->bodyMethods[$method]));
     }
 
     /**
@@ -377,8 +371,7 @@ class MailChimp
             'verify' => $this->verify()
         ];
 
-        $args = $this->addAll($defaultArgs, $args);
-        
+        $args = array_replace_recursive($defaultArgs, $args);
 
         if($this->bodyAllowed($method)){
             if(!isset($args['body'])){
@@ -396,39 +389,6 @@ class MailChimp
 
         return $response;
 
-    }
-
-     /**
-     * Accepts a variable number of arrays where the key-value pairs of each array 
-     * is added to it's sibling array.
-     *
-     * @return array the resulting array after combining all the given arrays.
-     * @author Chris Harris <c.harris@hotmail.com>
-     */
-    public static function addAll()
-    {
-        // the resulting array.
-        $array = [];    
-        
-        // a variable-length argument list.
-        if ($args = func_get_args()) {
-            // merge arguments that are of type array.
-            foreach ($args as $arg) {
-                if (is_array($arg)) {
-                    foreach (array_keys($arg) as $key) {
-                        if (isset($array[$key]) && is_array($array[$key]) && is_array($arg[$key])) {
-                            // recursively copy values from multidimensional arrays.
-                            $array[$key] = self::addAll($array[$key], $arg[$key]); 
-                        } else {
-                            // copy value to resulting array.
-                            $array[$key] = $arg[$key]; 
-                        }
-                    }
-                }
-            }
-        }
-
-        return $array;
     }
 
     /**
