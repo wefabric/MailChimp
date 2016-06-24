@@ -139,8 +139,7 @@ class MailChimp
      */
     private function setApiEndpoint()
     {
-        list(, $dataCenter) = explode('-', $this->apiKey);
-        $this->apiEndPoint  = sprintf($this->apiUrl, $dataCenter);
+        $this->apiEndPoint = sprintf($this->apiUrl, explode('-', $this->apiKey)[1]);
     }
 
     /**
