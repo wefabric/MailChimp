@@ -398,18 +398,19 @@ class MailChimp
     /**
      * Sets the MailChimp API response.
      * @param  ResponseInterface $response              PSR-7 response interface.
+     * @throws ResponseException if the response status code is not 200.
      * @return SlickLabs\MailChimp\ResponseInterface    the MailChimp API response.
      */
     protected function formatResponse(ResponseInterface $response)
     {
-        $mailChimpResponse = new Response($response);
+        $MailChimpResponse = new Response($response);
 
-        $body = $mailChimpResponse->getBody();
-        if (isset($body['status']) && $body['status'] !== 200 && isset($body['detail'])) {
-            throw new ResponseException($mailChimpResponse);
+        $body = $MailChimpResponse->getBody();
+        if (isset($body['status']) && $body['status'] !== 200) {
+            throw new ResponseException($MailChimpResponse);
         }
 
-        return $mailChimpResponse;
+        return $MailChimpResponse;
     }
 
 }
