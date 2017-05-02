@@ -406,7 +406,7 @@ class MailChimp
         $MailChimpResponse = new Response($response);
 
         $body = $MailChimpResponse->getBody();
-        if (isset($body['status']) && $body['status'] !== 200) {
+        if (isset($body['status']) && ($body['status'] !== 200 && $MailChimpResponse->getStatusCode() !== 200)) {
             throw new ResponseException($MailChimpResponse);
         }
 
