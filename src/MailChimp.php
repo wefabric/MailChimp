@@ -357,7 +357,6 @@ class MailChimp
      */
     protected function doRequest($method, $uri, $args = [])
     {
-
         $response = false;
 
         if(!$this->isValidMethod($method)){
@@ -381,7 +380,7 @@ class MailChimp
             if(!isset($args['body'])){
                 $args['body'] = '';
             }
-            $args['json'] = $args['body']; 
+            $args['json'] = $args['body'];
         }
         unset($args['body']);
 
@@ -405,8 +404,13 @@ class MailChimp
     {
         $MailChimpResponse = new Response($response);
 
+        if ($MailChimpResponse->getStatusCode() !== 200) {
+            throw new ResponseException($MailChimpResponse);
+        }
+
         $body = $MailChimpResponse->getBody();
-        if (isset($body['status']) && ($body['status'] !== 200 && $MailChimpResponse->getStatusCode() !== 200)) {
+
+        if (isset($body['status']) && is_int($body['status']) && $body['status'] !== 200) {
             throw new ResponseException($MailChimpResponse);
         }
 
