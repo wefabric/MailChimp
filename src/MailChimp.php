@@ -4,7 +4,7 @@ namespace SlickLabs\MailChimp;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use SlickLabs\MailChimp\Exception\MailChimpException;
 use SlickLabs\MailChimp\Exception\ResponseException;
@@ -54,7 +54,7 @@ class MailChimp
 
     /**
      * The request client.
-     * @var GuzzleHttp\Client
+     * @var GuzzleHttp\ClientInterface
      */
     private $client;
 
@@ -84,10 +84,11 @@ class MailChimp
      * Sets the MailChimp API key and request headers.
      * @param string $apiKey the MailChimp API key
      */
-    public function __construct($apiKey)
+    public function __construct($apiKey, ClientInterface $client = null)
     {
         $this->setApiKey($apiKey);
         $this->setHeaders($this->getDefaultHeaders());
+        $this->client = $client;
     }
 
     /**
@@ -232,7 +233,7 @@ class MailChimp
 
     /**
      * Returns the request client.
-     * @return GuzzleHttp\Client the request client.
+     * @return GuzzleHttp\ClientInterface the request client.
      */
     private function getClient()
     {
