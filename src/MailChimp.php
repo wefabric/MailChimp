@@ -5,6 +5,7 @@ namespace SlickLabs\MailChimp;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use SlickLabs\MailChimp\Exception\MailChimpException;
 use SlickLabs\MailChimp\Exception\ResponseException;
